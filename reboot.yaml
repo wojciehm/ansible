@@ -1,0 +1,9 @@
+---
+- name: Reboot all servers
+  hosts: all:!localhost  # Replace with specific group(s) if needed
+  become: true  # Requires root privileges
+
+  tasks:
+    - name: Reboot the server
+      reboot:
+

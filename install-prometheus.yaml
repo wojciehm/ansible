@@ -1,0 +1,32 @@
+---
+- name: Install Prometheus Node Exporter on Ubuntu
+  hosts: all
+  become: true  # Requires root privileges
+
+  tasks:
+    - name: Update package lists
+      apt: 
+        update_cache: yes
+      become: true
+
+    - name: Install node exporter package
+      apt:
+        name: node_exporter
+        state: present
+      become: true
+
+    - name: Enable and start node exporter service
+      systemd:
+        name: node_exporter
+        enabled: yes
+        state: started
+      become: true
+
+    - name: Open firewall port for node exporter (optional)
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        zone: public  # Adjust zone based on your configuration
+      become: true
+

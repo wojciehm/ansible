@@ -1,0 +1,14 @@
+---
+- name: Update and upgrade system packages
+  hosts: all  # Replace with specific group(s) if needed
+  become: true  # Requires root privileges
+
+  tasks:
+    - name: Update package lists
+      apt: update_cache=yes
+
+    - name: Upgrade system packages
+      apt: upgrade=yes
+
+    - name: Automatically remove unused packages
+      apt: autoremove=yes

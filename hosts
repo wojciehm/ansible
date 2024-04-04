@@ -1,0 +1,24 @@
+#ansible
+#[ansible]
+localhost ansible_connection=local
+# Define a single host with variables
+#[microk8s]
+microk8s-1.homelab01.wojcieh.lab
+microk8s-2.homelab01.wojcieh.lab
+microk8s-3.homelab01.wojcieh.lab
+microk8s-4.homelab01.wojcieh.lab
+microk8s-5.homelab01.wojcieh.lab
+microk8s-6.homelab01.wojcieh.lab
+
+#[docker]
+docker.homelab01.wojcieh.lab
+#[dns]
+dns.admin.wojcieh.lab
+
+#[tor]
+tor-vm.admin.wojcieh.lab
+# Define a group with children groups
+#[all]
+# ansible
+# dns
+# microk8s
