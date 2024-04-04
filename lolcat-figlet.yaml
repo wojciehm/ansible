@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install figlet and lolcat packages
+      apt:
+        name:
+          - figlet
+          - lolcat
+        state: present
+        update_cache: yes
+      # You can replace apt with yum for other distro families like RHEL/CentOS
+      # if needed
+
+    - name: Verify figlet installation (optional)
+      debug:
+        msg: "Figlet version: {{ figlet_version }}"
+      delegate_to: localhost
+      when: figlet.version is defined
+
+    - name: Verify lolcat installation (optional)
+      debug:
+        msg: "Lolcat version: {{ lolcat_version }}"
+      delegate_to: localhost
+      when: lolcat.version is defined
