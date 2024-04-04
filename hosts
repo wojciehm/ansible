@@ -12,11 +12,13 @@ microk8s-6.homelab01.wojcieh.lab
 
 #[docker]
 docker.homelab01.wojcieh.lab
+
 #[dns]
 dns.admin.wojcieh.lab
 
 #[tor]
 tor-vm.admin.wojcieh.lab
+
 # Define a group with children groups
 #[all]
 # ansible
