@@ -1,0 +1,24 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Backup existing files in /etc/update-motd.d (optional)
+      command: mv /etc/update-motd.d/* /root/update-motd.d_backup/  # Creates backup directory if it doesn't exist
+      when:  # Only run if there are files in /etc/update-motd.d
+        stat:
+          path: /etc/update-motd.d/*
+
+    - name: Create backup directory if it doesn't exist (alternative approach)
+      file:
+        path: /root/update-motd.d_backup
+        state: directory
+        mode: 0755
+
+    - name: Move existing files to backup directory (alternative approach)
+      command: mv /etc/update-motd.d/* /root/update-motd.d_backup/
+      when: stat.stat.exists  # Only run if /etc/update-motd.d exists
+
+    - name: Copy all files from /etc/update-motd.d to target directory
+      copy:
+        src: /etc/update-motd.d/
+        dest: /etc/update-motd.d/

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Copy files with backup within /etc/update-motd.d
+      copy:
+        src: /etc/update-motd.d/*
+        dest: /etc/update-motd.d/
+        backup: yes
+        mode: 0644  # Optional: Set backup file permissions (default: same as source)
