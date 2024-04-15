@@ -1,0 +1,3 @@
+#!/bin/bash
+#/usr/bin/env figlet BIBEK IS COOL AND LIKES MATH AND WILL LEARN IT FOREVER AND EVER!!!!!!| /usr/bin/env lolcat -f
+/usr/bin/env figlet "$(hostname)" | /usr/bin/env lolcat -f
